@@ -1,0 +1,43 @@
+{
+    "name":"P 全景 Javascript API",
+    "version":"Draft Version",
+    "update":"2015-09-07",
+    "desc":"<p>该api定义了一组 编程方式 使用krpano的方法</p>",
+    "data":[
+       {
+           "name":"P",
+           "full":"P Factory",
+           "desc":"P函数工厂",
+           "statics":[
+               {
+                   "name":"P.pano",
+                   "args":[["panoDiv"],["opts","PanoOptions"]],
+                   "return":"Pano",
+                   "desc":"构造全景"
+               }
+           ],
+           "properties":[
+               {"name":"heading","return":"number","desc":"返回偏航"}
+           ],
+           "events":[
+               {"name":"pano_changed","return":"none","desc":"全景场景改变时触发此事件。"}
+           ]
+       },
+       {
+        "name":"PanoOptions",
+        "full":"P.pano.PanoOptions object specification",
+        "desc":"<p>Options defining the properties of a <code>Pano</code> object.<br><code>Pano</code>对象的参数，此类没有构造函数，通过对象字面量形式表示。</p>",
+        "properties":[
+                       {"name":"addressControl","return":"boolean","desc":"地址控件的初始启用/停用状态."}
+                   ]
+       },
+       {
+           "name":"PanoLink",
+           "full":"P.pano.PanoLink object specification",
+           "desc":"全景邻接关系集</p>",
+           "properties":[
+                          {"name":"pano","return":"string","desc":"指向的全景id."}
+                      ]
+      }
+    ]
+}

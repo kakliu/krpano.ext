@@ -1,0 +1,101 @@
+<html lang="zh-cn">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <title>Docs Builder</title>
+    <script type="text/javascript" src="assets/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="assets/docs.js"></script>
+    <script>
+        $(function(){
+            var helper = {
+                "translate": function(v){
+                    var l = {
+                        'ctor':'构造函数',
+                        'methods':'方法',
+                        'properties':'属性',
+                        'statics':'静态方法',
+                        'events':'事件',
+                        'return':"返回值",
+                        'type':'属性',
+                        'args':'参数'
+                    }
+                    return l[v] || v;
+                },
+                "ret" : function(v){
+                    var l = {
+                        'methods':'return',
+                        'events':'args',
+                        'properties':'type',
+                        'statics':'return'
+                    }
+                    return l[v] || 'return';
+                }
+            };
+            var docs = location.search.substring(1) || "krpano";
+            $.ajax({url : 'doc/'+docs+'.docs.txt' , dataType:"json"})
+                    .done(function(resp){
+                        var html = vm($('body').html(), resp , helper);
+                        $('body').html(html);
+                    }).fail(function(){
+                        $('body').html('');
+                    });
+        })
+    </script>
+</head>
+<body>
+<!-- =this.data | init -->
+<!-- var field = ["ctor","methods","properties","events","statics"]; -->
+<div id="main" class="main">
+    <div class="header">
+        <h1 class="page-title">{{this.name}}</h1>
+        <h2>{{this.version}}</h2>
+        <p>Last updated <i>{{this.update}}</i></p>
+        <div class="special">{{this.desc}}</div>
+    </div>
+    <div>
+        <!--for(var i in this.data){-->
+        <h2 id="{{this.data[i].name}}">{{this.data[i].full?this.data[i].full:this.data[i].name}}</h2>
+        <p>{{this.data[i].desc}}</p>
+        <!--
+            for(var j in field){
+                var key = title = field[j];
+                var d = this.data[i][key];
+                if(d){
+                    if(key == "ctor") d = [d];
+        -->
+        <table width="100%" class="table-{{key}}">
+            <thead>
+            <tr><th colspan="3">{{title | translate}}</th></tr>
+            </thead>
+            <tbody>
+            <!--for(var k in d){-->
+            <tr>
+                <td><code>{{d[k].name}}{{d[k].args | args | link}}</code></td>
+
+                <td>
+                    <!--if(key!="ctor"){-->
+                    <div>{{ key | ret | translate}} {{d[k].return | link}}</div>
+                    <!--}-->
+                    <div class="desc">{{d[k].desc}}</div>
+                </td>
+            </tr>
+            <!--}-->
+            </tbody>
+        </table>
+        <!--
+                }
+            }
+        -->
+        <!--}-->
+    </div>
+    <div class="footer">
+        <div class="license">
+            <p style="display:none;">版权声明 本页面中的内容已获得<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/cn/">知识共享署名3.0许可</a></p>
+        </div>
+        <div id="last-updated">Last updated {{this.update}}</div>
+    </div>
+
+</div>
+</body>
+</html>

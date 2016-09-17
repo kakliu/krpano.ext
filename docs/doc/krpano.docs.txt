@@ -1,0 +1,90 @@
+{
+    "name":"P 全景 Javascript API",
+    "version":"Draft Version",
+    "update":"2015-09-07",
+    "desc":"<p>该API定义了一组 通过编程方式 使用krpano的方法</p>",
+    "data":[
+       {
+           "name":"P",
+           "full":"P Factory",
+           "desc":"P函数工厂",
+           "statics":[
+               {
+                   "name":"P.pano",
+                   "args":[["panoDiv","documentElement"],["opts","PanoOptions"]],
+                   "return":"Pano",
+                   "desc":"构造全景"
+               },{
+                   "name":"P.hotspot",
+                   "args":[["opts","HotSpotOptions"]],
+                   "return":"HotSpot",
+                   "desc":"构造一个热点"
+               }
+           ]
+       },
+       {
+        "name":"Pano",
+        "full":"P.Pano",
+        "desc":"全景构建类",
+        "ctor":{
+            "name":"Pano",
+            "args":[["panoDiv","documentElement"],["opts","PanoOptions"]],
+            "return":"Pano",
+            "desc":"在指定的HTML容器中创建全景"
+        },
+        "methods":[
+            {"name":"getPano","args":[],"return":"string","desc":"获取当前场景的id。"},
+            {"name":"getPov","args":[],"return":"Point","desc":"获取全景查看器的视角。"},
+            {"name":"getFov","args":[],"return":"number","desc":"获取全景查看器的视场。"},
+            {"name":"setPano","args":[["pano","string"]],"return":"this","desc":"设置场景。<code>pano</code>是要设置的场景的id。"},
+            {"name":"setPov","args":[["pov","Point"]],"return":"this","desc":"设置全景查看器的视角。"},
+            {"name":"setVisible","args":[["visible","boolean"]],"return":"this","desc":"设置街景查看器的显示状态。"},
+            {"name":"setView","args":[["type","string"]],"return":"this","desc":"设置全景透视方式，可选值为 <code>normal</code>(正常)、<code>planet</code>(行星视角)、<code>architectural</code>(建筑视角)。"},
+            {"name":"project","args":[["x","number"],["y","number"]],"return":"Point","desc":"全景球面到屏幕投影"},
+            {"name":"unproject","args":[["x","number"],["y","number"]],"return":"Point","desc":"屏幕到全景球面投影"}
+        ],
+        "events":[{"name":"pano_changed","desc":"全景切换事件"}]
+       },
+       {
+        "name":"PanoOptions",
+        "full":"P.pano.PanoOptions object specification",
+        "desc":"<p><code>Pano</code>对象的参数，此类没有构造函数，通过对象字面量形式表示。</p>",
+        "properties":[
+                       {"name":"addressControl","return":"boolean","desc":"地址控件的初始启用/停用状态."}
+                   ]
+       },
+
+       {
+        "name":"HotSpot",
+        "full":"P.Overlay.HotSpot",
+        "desc":"热点",
+        "ctor":{
+                "name":"HotSpot",
+                "args":[["opts","HotSpotOptions"]],
+                "return":"HotSpot",
+                "desc":"构造热点"
+            },
+        "methods":[
+            {"name":"setPano","args":[["pano","Pano"]],"return":"this","desc":"添加进全景"}
+            ]
+       },
+       {
+           "name":"HotSpotOptions",
+           "full":"P.Overlay.HotSpotOptions object specification",
+           "desc":"<p><code>HotSpot</code>对象的参数，此类没有构造函数，通过对象字面量形式表示。</p>",
+           "properties":[
+            {"name":"position","return":"Point","desc":"热点在全景中的位置"},
+            {"name":"icon","return":"string","desc":"热点图标"}
+          ]
+      },
+      {
+         "name":"Point",
+         "full":"P.base.Point object specification",
+         "desc":"<p><code>Point</code>对象，此类没有构造函数，通过对象字面量形式表示。</p>",
+         "properties":[
+          {"name":"x","return":"number","desc":"x"},
+          {"name":"y","return":"number","desc":"y"}
+        ]
+    }
+    ]
+}

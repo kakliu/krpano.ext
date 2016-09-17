@@ -1,0 +1,64 @@
+.date-time-picker .mask{
+    position: absolute;
+    width:100%;left:0;top:0;
+    height:100%;
+    background-color: rgba(0,0,0,0.75);
+}
+.date-time-picker .mask *{-webkit-user-select: none;
+    user-select: none;}
+.date-time-picker .wrap{
+    width:300px;
+    height:150px;
+    position: absolute;
+    left:50%;top:50%;margin-left:-150px;margin-top:-75px;overflow: hidden;
+/*http://www.tuicool.com/articles/QNfM3e*/
+}
+
+.date-time-picker .tile{
+    width:45px;height:150px;text-align: center;line-height: 42px;
+    float:left;color:#fff;font-weight: bold;
+    font-family: 'microsoft yahei';font-size: 17px;
+    position: relative;
+    top:49px;
+}
+.date-time-picker .tile:nth-child(n+2){margin-left:6px;}
+
+.date-time-picker .wrap-tile{position:absolute;top:0;margin:0;padding:0;  }
+
+.date-time-picker .tile .wrap-tile li{
+    height:45px;width:45px;list-style: none;
+    border:#818485 2px solid;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.5s;
+    -webkit-transition: opacity 0.5s;
+    margin-top:4px;
+}
+
+.date-time-picker .tile .wrap-tile.active li{opacity: 1;}
+
+.date-time-picker .tile li.select{
+    background-color: #e3c800;
+    border-color:#e3c800;
+    opacity: 1;
+}
+
+.date-time-picker .mask .ok
+{
+    position: absolute;width:30px;height:30px;
+    left:50%;margin-left:-45px;bottom:15px;
+    color:#fff;
+    background:url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 20 20' xml:space='preserve'><polyline points='3,10 8,15 17,6' style='fill-opacity:0;stroke:#ffffff;stroke-width:2'/></svg>") no-repeat center center;
+    border: 2px solid #fff;
+    border-radius: 30px;
+}
+
+.date-time-picker .mask .close
+{
+    position: absolute;width:30px;height:30px;
+    left:50%;margin-left:10px;bottom:15px;
+    color:#fff;
+    background:url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 20 20'><path d='M5,5 15,15 M15,5 5,15' style='fill-opacity:0;stroke:#ffffff;stroke-width:2'/></svg>") no-repeat center center;
+    border: 2px solid #fff;
+    border-radius: 30px;
+}

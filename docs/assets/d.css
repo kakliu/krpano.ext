@@ -1,0 +1,92 @@
+.date-time-picker *{font-family: 'microsoft yahei';}
+.date-time-picker{
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    pointer-events: none;
+    opacity: 0;
+
+}
+.date-time-picker.active{
+    pointer-events: auto;
+    opacity: 1;
+}
+.date-time-picker .mask{
+    width:100%;left:0;top:0;
+    height:100%;
+    background-color: rgba(0,0,0,0.45);
+    position: fixed;
+    z-index:9999;
+}
+.date-time-picker .mask *{-webkit-user-select: none;
+    user-select: none;}
+.date-time-picker .wrap{
+    width:100%;height:90px;
+    position: absolute;
+    bottom:-90px;left:0;overflow: hidden;
+    background-color: #fff;
+    padding: 40px 0 15px 0;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    /*http://www.tuicool.com/articles/QNfM3e*/
+}
+.date-time-picker.active .wrap{
+    bottom:0;
+}
+.date-time-picker .wrap .roller{
+    height:100%;
+    position: relative;
+    bottom:0;left:0;overflow: hidden;
+    background-color: #fff;
+    margin: 0 10px;
+}
+.date-time-picker .wrap .cnt{ display:table;width:100%;}
+
+.date-time-picker .shadow{
+    position: absolute;width:100%;height:100%;left:0;top:0;
+    pointer-events: none;
+    background: linear-gradient(#fff 0,rgba(245,245,245,0) 52%,rgba(245,245,245,0) 48%,#fff 100%);
+    background: -webkit-gradient(linear,left bottom,left top,from(#fff),color-stop(0.52,rgba(245,245,245,0)),color-stop(0.48,rgba(245,245,245,0)),to(#fff));
+    background: -webkit-linear-gradient(#fff 0,rgba(245,245,245,0) 52%,rgba(245,245,245,0) 48%,#fff 100%);
+    display: block;
+}
+
+.date-time-picker .lines{
+    width: 100%;display: block;
+    height: 32px;pointer-events: none;
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+    border-top: #e2e2e2 1px solid;
+    border-bottom: #e2e2e2 1px solid;
+}
+.date-time-picker .tile{
+    text-align: center;line-height: 42px;
+    color:#333;font-weight: 500;
+    font-size: 17px;
+    position: relative;
+    top:30px;display: table-cell;
+}
+
+.date-time-picker .wrap-tile{position:absolute;top:0;margin:0;padding:0; width:100%; }
+
+.date-time-picker .tile .wrap-tile li{
+    height:30px;width:100%;list-style: none;
+    box-sizing: border-box;
+    line-height: 30px;
+    text-align: center;
+}
+
+
+.date-time-picker .mask .ok,.date-time-picker .mask .cancel
+{
+    position: absolute;height:40px;line-height: 40px;padding:0 15px;
+    text-align: center;
+    right:0;top:0;
+    color:#9c8758;z-index:3;
+}
+
+.date-time-picker .mask .cancel
+{
+    left:0;right:auto;
+    color:#888;
+}
